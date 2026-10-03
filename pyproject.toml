@@ -1,6 +1,6 @@
 [project]
 name = "cron-expression-parser"
-version = "0.1.0"
+version = "0.1.1"
 description = "Parses standard five-field cron expressions into a set of next-fire times without external dependencies."
 requires-python = ">=3.10"
 dependencies = []
