@@ -34,3 +34,10 @@ The problem is narrow: given a cron expression and a starting datetime, find the
 **Impossible expressions.** An expression like `0 0 30 2 *` (February 30th) will never match. `next_after` searches forward up to one year and raises `ValueError` if no match is found, rather than looping forever.
 
 **`next_after` is exclusive.** It returns the first fire time strictly after the given datetime. If you pass a datetime that is itself a valid fire time, you get the *next* one.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
